@@ -22,6 +22,7 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-lg">
@@ -31,6 +32,7 @@ export default function Navbar() {
             <Link
               to="/"
               className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-indigo-600 hover:to-purple-500 transition duration-300 ease-in-out"
+              onClick={closeMenu}
             >
               Ray Of Hope
             </Link>
@@ -55,6 +57,7 @@ export default function Navbar() {
             <Link
               to="/donate"
               className="inline-flex items-center px-5 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 shadow-lg"
+              onClick={closeMenu}
             >
               Donate Now
             </Link>
@@ -118,6 +121,7 @@ export default function Navbar() {
                     ? "border-indigo-600 text-indigo-600"
                     : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700"
                 }`}
+                onClick={toggleMenu} // Updated to toggleMenu
               >
                 {item.name}
               </Link>
@@ -127,12 +131,14 @@ export default function Navbar() {
             <Link
               to="/signin"
               className="border border-gray-300 text-gray-700 bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 hover:text-white transition-all duration-300 ease-in-out transform hover:-translate-y-1 rounded-full px-6 py-2 text-base font-semibold shadow-lg"
+              onClick={toggleMenu} // Updated to toggleMenu
             >
               Sign In
             </Link>
             <Link
               to="/signup"
               className="border border-gray-300 text-gray-700 bg-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 hover:text-white transition-all duration-300 ease-in-out transform hover:-translate-y-1 rounded-full px-6 py-2 text-base font-semibold shadow-lg"
+              onClick={toggleMenu} // Updated to toggleMenu
             >
               Sign Up
             </Link>

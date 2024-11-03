@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import image9 from "../assets/image9.avif"; // Ensure the path is correct
 import { UsersIcon, HeartIcon, StarIcon } from "@heroicons/react/24/outline";
 import image15 from "../assets/image15.avif";
-import taimoor from "../assets/taimoor.jpg";
 // Ensure the path is correct
 
 export default function About() {
@@ -163,7 +162,7 @@ export default function About() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {[
             {
-              image: taimoor,
+              image: image15,
               name: "Taimoor Fayyaz",
               role: "Executive Director",
               bio: "15 years of experience in non-profit management and empowerment.",

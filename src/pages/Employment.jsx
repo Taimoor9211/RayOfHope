@@ -215,24 +215,24 @@ export default function EmpowermentPrograms() {
       </div>
 
       {/* Programs Section */}
-      <div className="bg-white rounded-2xl shadow-xl p-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">
+      <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-8">
           Business Support Programs
         </h2>
         <div className="space-y-6">
           {programs.map((program) => (
             <div
               key={program.title}
-              className="border border-gray-200 rounded-xl p-6 hover:border-green-500 hover:shadow-lg transition-all"
+              className="relative border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-green-500 hover:shadow-lg transition-all"
             >
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <div className="mb-4 sm:mb-0">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
                     {program.title}
                   </h3>
                   <p className="text-gray-600">{program.type}</p>
                   <p className="mt-2 text-gray-700">{program.description}</p>
-                  <div className="mt-4 flex items-center gap-4">
+                  <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                     <span className="flex items-center text-gray-500">
                       Investment: {program.investment}
                     </span>
@@ -240,34 +240,34 @@ export default function EmpowermentPrograms() {
                       Location: {program.location}
                     </span>
                   </div>
+                  <div className="mt-6">
+                    <h4 className="font-medium text-gray-900">Requirements:</h4>
+                    <ul className="mt-2 list-disc list-inside text-gray-600">
+                      {program.requirements.map((req) => (
+                        <li key={req}>{req}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-4">
+                    <h4 className="font-medium text-gray-900">We Provide:</h4>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {program.support.map((item) => (
+                        <span
+                          key={item}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 transition-all hover:bg-green-200"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <button
                   onClick={() => handleApplyNow(program)}
-                  className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-all"
+                  className="w-full sm:w-auto bg-green-600 text-white px-4 sm:px-6 py-2 rounded-md hover:bg-green-700 transition-all mt-4 sm:mt-0 lg:absolute lg:top-4 lg:right-4"
                 >
                   Apply Now
                 </button>
-              </div>
-              <div className="mt-6">
-                <h4 className="font-medium text-gray-900">Requirements:</h4>
-                <ul className="mt-2 list-disc list-inside text-gray-600">
-                  {program.requirements.map((req) => (
-                    <li key={req}>{req}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4">
-                <h4 className="font-medium text-gray-900">We Provide:</h4>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {program.support.map((item) => (
-                    <span
-                      key={item}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 transition-all hover:bg-green-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           ))}
@@ -325,10 +325,10 @@ export default function EmpowermentPrograms() {
       {/* Application Modal */}
       {showModal && selectedProgram && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all">
-            <div className="flex justify-between items-center mb-8 border-b pb-4">
+          <div className="bg-white rounded-3xl p-4 md:p-8 max-w-lg md:max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all">
+            <div className="flex justify-between items-center mb-4 md:mb-8 border-b pb-4">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">
                   {selectedProgram.title}
                 </h2>
                 <p className="text-green-600">{selectedProgram.type}</p>
@@ -337,16 +337,16 @@ export default function EmpowermentPrograms() {
                 onClick={handleCloseModal}
                 className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
               >
-                <XMarkIcon className="h-8 w-8" />
+                <XMarkIcon className="h-6 w-6 md:h-8 md:w-8" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-8">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {/* Personal Information Section */}
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Full Name
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -356,13 +356,13 @@ export default function EmpowermentPrograms() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
                       placeholder="Enter your full name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Email Address
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -372,13 +372,13 @@ export default function EmpowermentPrograms() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Phone Number
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -388,13 +388,13 @@ export default function EmpowermentPrograms() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
                       placeholder="+92 XXX XXXXXXX"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Address
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -404,16 +404,16 @@ export default function EmpowermentPrograms() {
                       value={formData.address}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300"
                       placeholder="Enter your complete address"
                     />
                   </div>
                 </div>
 
                 {/* Experience Section */}
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Relevant Experience
                     </label>
                     <textarea
@@ -421,13 +421,13 @@ export default function EmpowermentPrograms() {
                       value={formData.experience}
                       onChange={handleInputChange}
                       rows="4"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300 resize-none"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300 resize-none"
                       placeholder="Tell us about your relevant experience..."
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-1 md:mb-2">
                       Why are you interested?
                       <span className="text-red-500 ml-1">*</span>
                     </label>
@@ -437,7 +437,7 @@ export default function EmpowermentPrograms() {
                       onChange={handleInputChange}
                       required
                       rows="4"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300 resize-none"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 hover:border-green-300 resize-none"
                       placeholder="Why do you want to join this program?"
                     />
                   </div>
@@ -445,11 +445,11 @@ export default function EmpowermentPrograms() {
               </div>
 
               {/* Program Details Summary */}
-              <div className="mt-6 bg-green-50 rounded-xl p-4">
+              <div className="mt-4 md:mt-6 bg-green-50 rounded-xl p-4">
                 <h3 className="text-lg font-semibold text-green-800 mb-2">
                   Program Details
                 </h3>
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="text-gray-600">Investment Required:</p>
                     <p className="font-medium text-gray-800">
@@ -466,14 +466,14 @@ export default function EmpowermentPrograms() {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-6">
+              <div className="pt-4 md:pt-6">
                 <button
                   type="submit"
-                  className="w-full bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Submit Application
                 </button>
-                <p className="text-center text-sm text-gray-500 mt-4">
+                <p className="text-center text-xs md:text-sm text-gray-500 mt-4">
                   By submitting this form, you agree to our terms and conditions
                 </p>
               </div>
