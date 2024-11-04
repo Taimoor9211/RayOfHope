@@ -172,7 +172,10 @@ export default function Education() {
                   ))}
                 </div>
               </div>
-              <button className="mt-6 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 transition-colors">
+              <button
+                onClick={() => handleEnrollClick(course)}
+                className="mt-6 w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 transition-colors"
+              >
                 Enroll Now
               </button>
             </div>

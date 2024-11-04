@@ -1,4 +1,3 @@
-// src/pages/Donate.js
 import { useState, useEffect } from "react";
 import image7 from "../assets/image7.avif";
 import {
@@ -10,6 +9,9 @@ import {
 export default function Donate() {
   const [donationAmount, setDonationAmount] = useState("");
   const [donationType, setDonationType] = useState("one-time");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -35,6 +37,23 @@ export default function Donate() {
     },
   ];
 
+  const handlePayment = () => {
+    // Placeholder for payment processing logic
+    console.log(
+      `Proceeding to payment with ${donationAmount} as a ${donationType} donation.`
+    );
+    // Add logic for actual payment processing here
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setDonationAmount("");
+    setDonationType("one-time");
+    setFullName("");
+    setEmail("");
+    setPhone("");
+  };
+
   return (
     <div className="space-y-12 p-6 lg:p-12">
       {/* Hero Section */}
@@ -46,7 +65,7 @@ export default function Donate() {
         <div
           className="rounded-3xl overflow-hidden relative h-[500px] bg-cover bg-center"
           style={{
-            backgroundImage: `url(${image7})`, // replace with your image path
+            backgroundImage: `url(${image7})`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-70"></div>
@@ -125,6 +144,7 @@ export default function Donate() {
                 type="number"
                 placeholder="Other Amount"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                value={donationAmount}
                 onChange={(e) => setDonationAmount(e.target.value)}
               />
             </div>
@@ -139,6 +159,8 @@ export default function Donate() {
               <input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 required
               />
             </div>
@@ -147,6 +169,8 @@ export default function Donate() {
               <input
                 type="email"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -155,12 +179,17 @@ export default function Donate() {
               <input
                 type="tel"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
             </div>
           </div>
 
-          <button className="mt-6 w-full bg-rose-600 text-white rounded-md px-4 py-3 font-medium hover:bg-rose-700 transition-colors">
+          <button
+            onClick={handlePayment}
+            className="mt-6 w-full bg-rose-600 text-white rounded-md px-4 py-3 font-medium hover:bg-rose-700 transition-colors"
+          >
             Proceed to Payment
           </button>
         </div>
@@ -212,60 +241,44 @@ export default function Donate() {
               ].map((way) => (
                 <div
                   key={way.title}
-                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-rose-500 transition-colors cursor-pointer"
+                  className="flex items-start p-4 bg-rose-50 rounded-lg"
                 >
+                  <span className="h-6 w-6 text-rose-600 mr-4 flex-shrink-0">
+                    🤝
+                  </span>
                   <div>
                     <div className="font-medium text-gray-900">{way.title}</div>
                     <div className="text-gray-600">{way.description}</div>
                   </div>
-                  <span className="h-5 w-5 text-rose-600">➡️</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Impact Statistics */}
-      <div className="bg-rose-50 rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          Your Support Makes a Difference
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {[
-            {
-              label: "Lives Impacted",
-              stat: "10,000+",
-              icon: (
-                <UserGroupIcon className="h-12 w-12 text-rose-400 mx-auto mb-4" />
-              ),
-            },
-            {
-              label: "Donations Received",
-              stat: "Rs. 2 Crore+",
-              icon: (
-                <CurrencyRupeeIcon className="h-12 w-12 text-rose-400 mx-auto mb-4" />
-              ),
-            },
-            {
-              label: "Projects Completed",
-              stat: "150+",
-              icon: (
-                <HeartIcon className="h-12 w-12 text-rose-400 mx-auto mb-4" />
-              ),
-            },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="bg-white rounded-lg shadow-md p-6 text-center"
-            >
-              {item.icon}
-              <div className="text-2xl font-bold text-gray-900">
-                {item.stat}
-              </div>
-              <div className="text-gray-600">{item.label}</div>
+        <div className="bg-rose-50 rounded-2xl p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+            Together We Can
+          </h2>
+          <p className="text-lg text-gray-700 mb-4 text-center">
+            With your support, we have achieved significant milestones.
+          </p>
+          <div className="flex flex-col md:flex-row justify-around">
+            <div className="text-center mb-4 md:mb-0">
+              <UserGroupIcon className="h-12 w-12 text-rose-600 mb-2 mx-auto"></UserGroupIcon>
+              <p className="text-2xl font-bold">500+</p>
+              <p className="text-gray-600">Families Helped</p>
             </div>
-          ))}
+            <div className="text-center mb-4 md:mb-0">
+              <CurrencyRupeeIcon className="h-12 w-12 text-rose-600 mb-2 mx-auto"></CurrencyRupeeIcon>
+              <p className="text-2xl font-bold">Rs. 10,000,000+</p>
+              <p className="text-gray-600">Raised So Far</p>
+            </div>
+            <div className="text-center">
+              <HeartIcon className="h-12 w-12 text-rose-600 mb-2 mx-auto"></HeartIcon>
+              <p className="text-2xl font-bold">300+</p>
+              <p className="text-gray-600">Volunteers Mobilized</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
